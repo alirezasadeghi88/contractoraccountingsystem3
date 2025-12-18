@@ -13,6 +13,19 @@ public class ExpenseDAO {
                 "(project_id, description, amount, expense_date)" +
                 "VALUES (?, ?, ?, ?)";
 
+        try(Connection connection = DBConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
+            preparedStatement.setInt(1,projectId);
+            preparedStatement.setString(2,desc);
+            preparedStatement.setDouble(3,amount);
+            preparedStatement.setDate(4, Date.valueOf(date));
+
+            preparedStatement.executeUpdate();
+            System.out.println("Expense added ✅");
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
