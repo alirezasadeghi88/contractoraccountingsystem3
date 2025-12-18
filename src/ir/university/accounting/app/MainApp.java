@@ -30,6 +30,10 @@ public class MainApp {
                 Choose:
                 """);
 
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
 
 
 
