@@ -91,7 +91,10 @@ public class MainApp {
                     reportDAO.printReport(pid);
                 }
 
-
+                case 5->{
+                    System.out.println("👋 Exit");
+                    System.exit(0);
+                }
             }
         }
     }
