@@ -12,5 +12,17 @@ public class ReportDAO {
         String sql =  "SELECT COALESCE(SUM(amount),0) FROM " +
                 table + " WHERE project_id=?";
 
-       }
+        try(Connection connection = DBConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1,projectId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next())
+                return resultSet.getDouble(1);
+        }
+        return 0;
+    }
+
+    }
 }
